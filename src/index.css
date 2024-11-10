@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-text-primary font-sans antialiased;
+  }
+
+  /* Improve tap targets on mobile */
+  button, a {
+    @apply cursor-pointer select-none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Better form elements on mobile */
+  input, select {
+    @apply appearance-none;
+    font-size: 16px; /* Prevents zoom on focus in iOS */
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-primary-dark text-white font-medium
+    px-6 py-2.5 rounded-md transition-all duration-200
+    hover:shadow-primary-lg hover:scale-[1.02]
+    focus:ring-2 focus:ring-primary/20 focus:outline-none
+    active:scale-[0.98] select-none;
+  }
+
+  .btn-secondary {
+    @apply bg-card-bg text-primary border border-primary/20
+    px-6 py-2.5 rounded-md transition-all duration-200
+    hover:bg-primary/5 hover:border-primary/30
+    focus:ring-2 focus:ring-primary/20 focus:outline-none
+    active:scale-[0.98] select-none;
+  }
+
+  .card {
+    @apply bg-card-bg/90 backdrop-blur border border-border-color rounded-xl p-4 sm:p-6
+    shadow-lg shadow-black/5 transition-all duration-200;
+  }
+
+  .input-primary {
+    @apply bg-background/50 border border-border-color rounded-md px-4 py-2.5
+    focus:ring-2 focus:ring-primary/20 focus:border-primary/30 focus:outline-none
+    placeholder:text-text-secondary text-text-primary transition-all duration-200
+    disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent;
+  }
+
+  .tier-card {
+    @apply card hover:scale-[1.02] hover:shadow-primary-lg hover:border-primary/20 
+    transition-all duration-300;
+  }
+}
+
+.kaspa-gradient {
+  @apply bg-gradient-to-r from-primary to-primary-dark;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  .card {
+    @apply rounded-lg; /* Slightly smaller border radius on mobile */
+  }
+
+  input[type="number"] {
+    @apply text-base; /* Larger text for better readability */
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
